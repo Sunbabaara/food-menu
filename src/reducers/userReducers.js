@@ -7,6 +7,14 @@ const userReducer = (state, action) => {
       user: action.payload,
      
         };
+        case "REGISTER_USER":
+    return {
+      ...state,
+      isPending:false,
+      user: action.payload,
+     
+        };
+
         default: 
         return state;
 }

@@ -17,6 +17,9 @@ import {Link} from "react-router-dom";
             <Nav.Item>
                 <Link to = "/login" classname="nav-link">LOG IN</Link>
             </Nav.Item>
+            <Nav.Item>
+                <Link to = "/register" classname="nav-link">SIGN UP</Link>
+            </Nav.Item>
         </Nav>
         </Container>
         </Navbar>

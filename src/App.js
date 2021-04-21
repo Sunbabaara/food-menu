@@ -5,6 +5,7 @@ import Food from "./screens/Food";
 import Header from "./components/Header";
 import Home from "./screens/Home";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterUserScreen from "./screens/RegisterUserScreen";
 import { Container } from 'react-bootstrap';
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
       <Switch>
       <Route path ="/" component={Home} exact/>
       <Route path ="/food" component={Food}/>
+      <Route path ="/addfood" component={AddFood}/>
       <Route path ="/login" component={LoginScreen}/>
+      <Route path ="/register" component={RegisterUserScreen}/>
       </Switch>
       </Container>
     </main>
