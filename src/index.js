@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from "react-router-dom";
+import "./bootstrap.min.css";
+import FoodContextProvider from "./contexts/FoodContext";
+import UserContextProvider from "./contexts/userContext";
 
 ReactDOM.render(
+
   <React.StrictMode>
+    <UserContextProvider>
+     <FoodContextProvider>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
+    </FoodContextProvider>
+    </UserContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
