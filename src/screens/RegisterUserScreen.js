@@ -1,5 +1,5 @@
-import {Form , Col, Button} from "react-bootstrap"
-import {useState} from "react"
+import {Form , Col, Button, Row} from "react-bootstrap"
+import {useState, useContext} from "react"
 import React from 'react'
 import {UserContext} from "../contexts/userContext";
 
@@ -21,8 +21,11 @@ const RegisterUserScreen = () => {
     }
     return (
         <div>
-         <Col xs= {12} sm={12} md={6} lg={6}>
-         <Form>
+            <Row className="justify-content-md-center">
+         <Col xs= {12} sm={12} md={6} lg={6}
+         className="justify-center border border-green mt-5 p-3"
+         >
+         <Form onSubmit={handleSubmit}>
           <Form.Group>
           <Form.Label> name </Form.Label>
           <Form.Control placeholder = "enter name" value ={name} 
@@ -43,6 +46,7 @@ const RegisterUserScreen = () => {
           <Button type="submit">SIGN UP</Button>
          </Form>
          </Col>   
+         </Row>
         </div>
     )
 }

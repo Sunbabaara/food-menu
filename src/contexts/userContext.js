@@ -27,12 +27,17 @@ const UserContextProvider=({children}) => {
         user, config
     );
     
-            localStorage.setItem("userInfo", data.data)
+       await localStorage.setItem("userInfo",JSON.stringify(data.data)) 
+
+        const userLogin = (await localStorage.getItem("userInfo"))
+          ? JSON.parse(localStorage.getItem("userInfo"))
+          :{}
+
             dispatch({
                 type: "LOGIN_USER",
-                payload:data
+                payload:userLogin,
             });
-        console.log(data)
+        //console.log(data)
     }
 
     //register user
@@ -58,8 +63,20 @@ const UserContextProvider=({children}) => {
    console.log(error.message);
     }}
 
+    //logout
+    const logout = async()=>{
+    await localStorage.removeItem("userInfo")
+    dispatch ({
+        type:"LOGOUT",
+    });
+    }
 return (
-    <UserContext.Provider value = {{ loginUser, user:state.user, isPending: state.isPending, registerUser}}> 
+    <UserContext.Provider 
+    value = {{ loginUser, 
+    user:state.user, 
+    isPending: state.isPending,
+     registerUser, 
+     logout}}> 
     {children}
     </UserContext.Provider>
 )

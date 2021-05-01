@@ -1,13 +1,22 @@
 
-import {useState, useContext} from "react"
+import {useState, useContext, useEffect} from "react"
 import {Button, Form} from "react-bootstrap";
 import {UserContext} from "../contexts/userContext"
 
- const LoginScreen = () => {
+ const LoginScreen = ({history, location}) => {
 
-    const {loginUser} = useContext (UserContext)
+    const {loginUser, user} = useContext (UserContext)
     const [email, setEmail]=useState("")
     const [password, setPassword]=useState("");
+
+const redirect=location.search ? location.search.split("=")[1] : "/";
+
+useEffect(()=>{
+    if (user.token){
+        history.push(redirect);
+    }
+},[history, user, redirect])
+
 
 function handleSubmit(e){
 e.preventDefault();
@@ -46,6 +55,7 @@ e.preventDefault();
                 placeholder = "enter email" 
                 type="email" value={email}
                  onChange= {(e)=>setEmail(e.target.value)}/>
+
 
                 <Form.Control placeholder = "enter password"
                  type="password" value={password}

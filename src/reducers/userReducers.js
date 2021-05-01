@@ -15,6 +15,14 @@ const userReducer = (state, action) => {
      
         };
 
+        case "LOGOUT":
+    return {
+      ...state,
+      isPending:false,
+      user: "",
+     
+        };
+
         default: 
         return state;
 }
